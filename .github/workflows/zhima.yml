@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/jimmy1141/zy/blob/master/Task/zhima.js
+          git clone https://github.com/jimmy1141/zy
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
