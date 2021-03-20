@@ -28,12 +28,13 @@ jobs:
       - name: npm install
         if: env.ZM_zhimabody
         run: |
-          cd ~/JavaScript
+          cd ~/zy
+          git checkout main
           npm install
       - name: '运行 【芝麻视频】'
         if: env.ZM_zhimabody
         run: |
-          cd ~/JavaScript
+          cd ~/zy
           node Task/zhima.js
         env:
           
