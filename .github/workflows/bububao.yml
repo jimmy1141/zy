@@ -1,9 +1,9 @@
-name: 步步宝
+name: 笑谱
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '0,30 0-23 * * *'
+     - cron: '*/15 0-15 * * *'
   watch:
     types: started
 jobs:
@@ -11,9 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        BBB_bububaoTOKEN: ${{ secrets.BBB_bububaoTOKEN }}
-        BBB_CASH: ${{ secrets.BBB_CASH }}    
         
+        XP_refreshTOKEN: ${{ secrets.XP_refreshTOKEN }}
+        XP_iboxpayvideoHEADER: ${{ secrets.XP_iboxpayvideoHEADER }}
+        XP_iboxpayvideoBODY: ${{ secrets.XP_iboxpayvideoBODY }}
+        XP_CASH: ${{ secrets.XP_CASH }}
+        XP_live: ${{ secrets.XP_live }}
     steps:
       - name: Checkout
         run: |
@@ -26,7 +29,6 @@ jobs:
         if: env.BBB_bububaoTOKEN
         run: |
           cd ~/zy
-          git checkout zy
           npm install
       - name: '运行 【步步宝】'
         if: env.BBB_bububaoTOKEN
