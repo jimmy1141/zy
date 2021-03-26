@@ -26,7 +26,7 @@ jobs:
         if: env.BBB_bububaoTOKEN
         run: |
           cd ~/zy
-          
+          git checkout ZIYE
           npm install
       - name: '运行 【步步宝】'
         if: env.BBB_bububaoTOKEN
