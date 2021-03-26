@@ -58,7 +58,7 @@ jobs:
         if: env.BBB_bububaoTOKEN
         run: |
           cd ~/zy
-          git checkout main
+          git checkout master
           npm install
       - name: '运行 【步步宝】'
         if: env.BBB_bububaoTOKEN
