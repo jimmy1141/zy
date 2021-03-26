@@ -18,7 +18,7 @@ jobs:
           node-version: 14.x
       - name: npm install
         run: |
-          cd ~/js
+          cd ~/zy
           npm install
           npm install cron
           npm install request
@@ -27,4 +27,4 @@ jobs:
           cd ~/zy   
           node Task/bububao.js
     env:
-          ENCRYPT_KEY: ${{ secrets.ENCRYPT_KEY }}
+          ENCRYPT_KEY: ${{ secrets.BBB_bububaoTOKEN }}
