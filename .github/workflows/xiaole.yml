@@ -1,48 +1,39 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: 小乐
+name: bububao@ziye3
 
 on:
-  workflow_dispatch:
-  schedule:
-     - cron: '19 0-15 * * *'
-  watch:
-    types: started
+    workflow_dispatch:
+    schedule:
+      - cron: "0,30 0-16,21,22,23 * * *"
+    watch:
+      types: [started]
+    repository_dispatch:
+      types: bububao
+
 jobs:
   build:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
-    env:
-        XL_URL: ${{ secrets.XL_URL }}
-        XL_HEADER: ${{ secrets.XL_HEADER }}		
-        
     steps:
       - name: Checkout
-        run: |
-          git clone https://github.com/jimmy1141/zy.git ~/zy
+        uses: actions/checkout@v2
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
       - name: npm install
-        if: env.XL_URL
         run: |
-          cd ~/zy
           npm install
-      - name: '运行 【小乐】'
-        if: env.XL_URL
-        run: |
-          cd ~/zy
-          node Task/xiaole.js
-        env:
           
+      - name: '运行 【小乐】'
+        run: |
+          node Task/xiaole.js
+        
+        env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
 
-    
+
